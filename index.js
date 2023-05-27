@@ -1,5 +1,5 @@
 function atualizarClientes() {
-    const ul = document.getElementById('listaContatos')
+    const ul = document.getElementById('listaClientes')
     ul.innerHTML = ''
     
     const clientes = fetch('https://exemplo-api-teste-seft.onrender.com/cliente')
@@ -37,7 +37,8 @@ function cadastrarCliente(form){
     const clienteNovo = {
         nome: form.target.nome.value,
         email: form.target.email.value,
-        telefone: form.target.telefone.value
+        telefone: form.target.telefone.value,
+        senha: form.target.senha.value,
     }
     fetch('https://exemplo-api-teste-seft.onrender.com/cliente',{
         method: 'POST',
@@ -75,14 +76,14 @@ function deletarCliente(id){
 
 
 function atualizarFornecedores() {
-    const u2 = document.getElementById('listaContatos')
+    const u2 = document.getElementById('listaFornecedores')
     u2.innerHTML = ''
 
 const fornecedores = fetch('https://exemplo-api-teste-seft.onrender.com/fornecedor')
 .then(resposta => resposta.json())
 .then(fornecedoresDados => {
     fornecedoresDados.forEach(fornecedor => {
-        const li2 = document.createElement('li2')
+        const li2 = document.createElement('li')
         li2.innerText = `${fornecedor.nome} - ${fornecedor.email}`
 
         //botão deletar
@@ -112,9 +113,10 @@ formCadastro2.addEventListener('submit',(event) => {
 
 function cadastrarFornecedor(form2){
     const fornecedorNovo = {
-        nome: form2.target.nome.value,
-        email: form2.target.email.value,
-        telefone: form2.target.telefone.value
+        nome: form.target.nome.value,
+        email: form.target.email.value,
+        telefone: form.target.telefone.value,
+        endereco: form.target.endereco.value,
     }
     fetch('https://exemplo-api-teste-seft.onrender.com/fornecedor',{
         method: 'POST',
@@ -150,7 +152,7 @@ function deletarFornecedor(id){
 
 
 function atualizarProdutos() {
-    const u3 = document.getElementById('listaContatos')
+    const u3 = document.getElementById('listaProdutos')
     u3.innerHTML = ''
 
 
@@ -158,7 +160,7 @@ const produtos = fetch('https://exemplo-api-teste-seft.onrender.com/produto')
 .then(resposta => resposta.json())
 .then(produtosDados => {
     produtosDados.forEach(produto => {
-        const li3 = document.createElement('li3')
+        const li3 = document.createElement('li')
         li3.innerText = `${produto.nome} - ${produto.email}`
 
         const btnDelete = document.createElement('button')
@@ -179,7 +181,7 @@ const produtos = fetch('https://exemplo-api-teste-seft.onrender.com/produto')
 
 atualizarProdutos()
 
-const formCadastro3 = document.getElementById('formProduto')
+const formCadastro3 = document.getElementById('formProdutos')
 formCadastro3.addEventListener('submit',(event) => {
     event.preventDefault()
     cadastrarProduto(event)
@@ -187,9 +189,9 @@ formCadastro3.addEventListener('submit',(event) => {
 
 function cadastrarProduto(form3){
     const produtoNovo = {
-        nome: form3.target.nome.value,
-        email: form3.target.email.value,
-        telefone: form3.target.telefone.value
+        descricao: form3.target.descricao.value,
+        preco: form3.target.preco.value,
+        quantidade: form3.target.quantidade.value
     }
     fetch('https://exemplo-api-teste-seft.onrender.com/produto',{
         method: 'POST',
