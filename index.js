@@ -39,6 +39,7 @@ function cadastrarCliente(form){
         email: form.target.email.value,
         telefone: form.target.telefone.value,
         senha: form.target.senha.value,
+        endereco: form.target.endereco.value,
     }
     fetch('https://exemplo-api-teste-seft.onrender.com/cliente',{
         method: 'POST',
